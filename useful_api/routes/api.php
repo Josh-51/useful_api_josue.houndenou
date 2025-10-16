@@ -16,5 +16,5 @@ Route::post('login', [AuthController::class, 'login']);
 
 Route::post('/modules/{id}/activate', [ModuleControlller::class, 'activate'])->middleware('auth:sanctum');
 Route::post('/modules/{id}/deactivate', [ModuleControlller::class, 'deactivate'])->middleware('auth:sanctum');
-Route::get('/modules', [ModuleControlller::class, 'index'])->middleware('auth:sanctum' , 'App\Http\Middleware\CheckModuleActive:3');
+Route::get('/modules', [ModuleControlller::class, 'index'])->middleware('auth:sanctum');
 
