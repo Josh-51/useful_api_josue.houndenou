@@ -11,20 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_modules', function (Blueprint $table) {
+        Schema::create('short_links', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('module_id')->constrained()->onDelete('cascade');
-            $table->boolean('active')->default(false);
+            $table->string('original_url')->unique();
+            $table->string('code')->unique();
+            $table->integer('clicks')->default(0);
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_modules');
+        Schema::dropIfExists('short_links');
     }
 };
