@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ModuleControlller;
 use App\Http\Controllers\ShortLinkController;
+use App\Http\Controllers\TransferController;
 use App\Http\Middleware\CheckModuleActive;
 
 Route::get('/user', function (Request $request) {
@@ -30,4 +31,4 @@ Route::get('/links', [ShortLinkController::class, 'getlink'])->middleware('auth:
 Route::delete('/links/{id}', [ShortLinkController::class, 'destroy'])->middleware('auth:sanctum', 'App\Http\Middleware\CheckModuleActive:1');
 
 
-
+Route::post('/wallet/transfert', [TransferController::class, 'registerWallet'])->middleware('auth:sanctum', 'App\Http\Middleware\CheckModuleActive:2');
