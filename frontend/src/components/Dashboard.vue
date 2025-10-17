@@ -25,6 +25,16 @@ const activate = async (id) => {
   }
 }
 
+const deactivate = async (id) => {
+
+  const result=store.deactivateModule(id)
+  if(result){
+    const alert= await store.fetchModuleActive()
+    active.value=alert
+    toast.success("Module désactivé")
+  }
+}
+
 </script>
 
 <template>
@@ -47,6 +57,12 @@ const activate = async (id) => {
       <button class=" text-gray-100" @click="activate(3)">Activer le Module3 </button>
       <button class=" text-gray-100" @click="activate(4)">Activer le Module4 </button>
       <button class=" text-gray-100" @click="activate(5)">Activer le Module5 </button>
+
+      <button class=" text-gray-100" @click="deactivate(1)">Desactiver le Module1 </button>
+      <button class=" text-gray-100" @click="deactivate(2)">Desactiver le Module2 </button>
+      <button class=" text-gray-100" @click="deactivate(3)">Desactiver le Module3 </button>
+      <button class=" text-gray-100" @click="deactivate(4)">Desactiver le Module4 </button>
+      <button class=" text-gray-100" @click="deactivate(5)">Desactiver le Module5 </button>
 
     </div>
   </div>
